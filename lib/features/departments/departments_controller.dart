@@ -41,8 +41,6 @@ class DepartmentsController extends StateNotifier<bool> {
     try {
       state = true;
       Map data = {"name": department.name};
-      debugPrint(data.toString());
-      debugPrint(department.toJson().toString());
       await _dio.post(Endpoints.departments, data: data);
       isSuccessful = true;
     } catch (e) {
@@ -57,8 +55,8 @@ class DepartmentsController extends StateNotifier<bool> {
   Future<void> updateDepartment(Department department) async {
     try {
       state = true;
-      await _dio.put('${Endpoints.departments}/${department.id}/',
-          data: department.toJson());
+      Map data = {"name": department.name};
+      await _dio.put('${Endpoints.departments}/${department.id}/', data: data);
     } catch (e) {
       rethrow;
     } finally {

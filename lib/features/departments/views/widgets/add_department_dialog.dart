@@ -4,15 +4,18 @@ import 'package:emplman/features/departments/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddDepartmentDialog extends ConsumerStatefulWidget {
-  const AddDepartmentDialog({super.key});
+class AddOrEditDepartmentDialog extends ConsumerStatefulWidget {
+  const AddOrEditDepartmentDialog({super.key, this.department});
+
+  final Department? department;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _AddDepartmentDialogState();
 }
 
-class _AddDepartmentDialogState extends ConsumerState<AddDepartmentDialog> {
+class _AddDepartmentDialogState
+    extends ConsumerState<AddOrEditDepartmentDialog> {
   final formKey = GlobalKey<FormState>();
 
   late TextEditingController _nameController;
@@ -20,30 +23,36 @@ class _AddDepartmentDialogState extends ConsumerState<AddDepartmentDialog> {
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
+    _nameController = TextEditingController(text: widget.department?.name);
   }
 
-  void onpressed() {
+  void onpressed() async {
     if (formKey.currentState!.validate()) {
-      final department = Department(name: _nameController.text);
-      ref
-          .read(departmentsControllerProvider.notifier)
-          .createDepartment(department)
-          .then((value) {
-        if (value) {
-          Navigator.pop(context);
-          ref.refresh(getDepartmentsProvider);
-        }
-      });
+      final dept = Department(
+        id: widget.department?.id,
+        name: _nameController.text,
+      );
+      if (widget.department == null) {
+        await ref
+            .read(departmentsControllerProvider.notifier)
+            .createDepartment(dept);
+      } else {
+        await ref
+            .read(departmentsControllerProvider.notifier)
+            .updateDepartment(dept);
+      }
+      Navigator.pop(context);
+      ref.refresh(getDepartmentsProvider);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     bool isLoading = ref.watch(departmentsControllerProvider);
+    final dept = widget.department;
 
     return AlertDialog(
-      title: const Text("Add Department"),
+      title: Text("${dept == null ? 'Add' : 'Edit'} Department"),
       content: Form(
         key: formKey,
         child: Column(

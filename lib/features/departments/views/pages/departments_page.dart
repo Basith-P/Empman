@@ -12,7 +12,8 @@ class DepartmentsListPage extends StatelessWidget {
       body: const DepartmentsList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog(
-            context: context, builder: (_) => const AddDepartmentDialog()),
+            context: context,
+            builder: (_) => const AddOrEditDepartmentDialog()),
         child: const Icon(FluentIcons.add_24_regular),
       ),
     );
