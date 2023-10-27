@@ -7,10 +7,11 @@ part 'employee.g.dart';
 @freezed
 class Employee with _$Employee {
   const factory Employee({
-    required int id,
+    int? id,
     required String name,
     required String email,
     Department? department,
+    @JsonKey(name: 'date_of_joining') String? joiningDate,
   }) = _Employee;
 
   factory Employee.fromJson(Map<String, dynamic> json) =>

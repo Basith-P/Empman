@@ -20,10 +20,12 @@ Employee _$EmployeeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Employee {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   Department? get department => throw _privateConstructorUsedError;
+  @JsonKey(name: 'date_of_joining')
+  String? get joiningDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $EmployeeCopyWith<$Res> {
   factory $EmployeeCopyWith(Employee value, $Res Function(Employee) then) =
       _$EmployeeCopyWithImpl<$Res, Employee>;
   @useResult
-  $Res call({int id, String name, String email, Department? department});
+  $Res call(
+      {int? id,
+      String name,
+      String email,
+      Department? department,
+      @JsonKey(name: 'date_of_joining') String? joiningDate});
 
   $DepartmentCopyWith<$Res>? get department;
 }
@@ -54,16 +61,17 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? email = null,
     Object? department = freezed,
+    Object? joiningDate = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -76,6 +84,10 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
               as Department?,
+      joiningDate: freezed == joiningDate
+          ? _value.joiningDate
+          : joiningDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -100,7 +112,12 @@ abstract class _$$EmployeeImplCopyWith<$Res>
       __$$EmployeeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String email, Department? department});
+  $Res call(
+      {int? id,
+      String name,
+      String email,
+      Department? department,
+      @JsonKey(name: 'date_of_joining') String? joiningDate});
 
   @override
   $DepartmentCopyWith<$Res>? get department;
@@ -117,16 +134,17 @@ class __$$EmployeeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? email = null,
     Object? department = freezed,
+    Object? joiningDate = freezed,
   }) {
     return _then(_$EmployeeImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -139,6 +157,10 @@ class __$$EmployeeImplCopyWithImpl<$Res>
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
               as Department?,
+      joiningDate: freezed == joiningDate
+          ? _value.joiningDate
+          : joiningDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -147,26 +169,30 @@ class __$$EmployeeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EmployeeImpl implements _Employee {
   const _$EmployeeImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.email,
-      this.department});
+      this.department,
+      @JsonKey(name: 'date_of_joining') this.joiningDate});
 
   factory _$EmployeeImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeeImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
   final String email;
   @override
   final Department? department;
+  @override
+  @JsonKey(name: 'date_of_joining')
+  final String? joiningDate;
 
   @override
   String toString() {
-    return 'Employee(id: $id, name: $name, email: $email, department: $department)';
+    return 'Employee(id: $id, name: $name, email: $email, department: $department, joiningDate: $joiningDate)';
   }
 
   @override
@@ -178,12 +204,15 @@ class _$EmployeeImpl implements _Employee {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.department, department) ||
-                other.department == department));
+                other.department == department) &&
+            (identical(other.joiningDate, joiningDate) ||
+                other.joiningDate == joiningDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email, department);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, email, department, joiningDate);
 
   @JsonKey(ignore: true)
   @override
@@ -201,22 +230,27 @@ class _$EmployeeImpl implements _Employee {
 
 abstract class _Employee implements Employee {
   const factory _Employee(
-      {required final int id,
-      required final String name,
-      required final String email,
-      final Department? department}) = _$EmployeeImpl;
+          {final int? id,
+          required final String name,
+          required final String email,
+          final Department? department,
+          @JsonKey(name: 'date_of_joining') final String? joiningDate}) =
+      _$EmployeeImpl;
 
   factory _Employee.fromJson(Map<String, dynamic> json) =
       _$EmployeeImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override
   String get email;
   @override
   Department? get department;
+  @override
+  @JsonKey(name: 'date_of_joining')
+  String? get joiningDate;
   @override
   @JsonKey(ignore: true)
   _$$EmployeeImplCopyWith<_$EmployeeImpl> get copyWith =>

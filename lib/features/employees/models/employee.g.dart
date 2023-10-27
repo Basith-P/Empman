@@ -8,12 +8,13 @@ part of 'employee.dart';
 
 _$EmployeeImpl _$$EmployeeImplFromJson(Map<String, dynamic> json) =>
     _$EmployeeImpl(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       name: json['name'] as String,
       email: json['email'] as String,
       department: json['department'] == null
           ? null
           : Department.fromJson(json['department'] as Map<String, dynamic>),
+      joiningDate: json['date_of_joining'] as String?,
     );
 
 Map<String, dynamic> _$$EmployeeImplToJson(_$EmployeeImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$EmployeeImplToJson(_$EmployeeImpl instance) =>
       'name': instance.name,
       'email': instance.email,
       'department': instance.department,
+      'date_of_joining': instance.joiningDate,
     };

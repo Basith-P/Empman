@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:emplman/core/endpoints.dart';
 import 'package:emplman/features/employees/models/employee.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class EmployeesController extends StateNotifier<bool> {
@@ -33,15 +34,21 @@ class EmployeesController extends StateNotifier<bool> {
     }
   }
 
-  Future<void> createEmployee(Employee employee) async {
+  Future<bool> createEmployee(Employee employee) async {
+    bool isSuccessful = false;
     try {
       state = true;
-      await _dio.post(Endpoints.employees, data: employee.toJson());
+      Map data = employee.toJson();
+      data['department'] = employee.department?.id ?? 1;
+      debugPrint(data.toString());
+      await _dio.post(Endpoints.employees, data: data);
+      isSuccessful = true;
     } catch (e) {
-      rethrow;
+      debugPrint('=======> Error: $e');
     } finally {
       state = false;
     }
+    return isSuccessful;
   }
 
   Future<void> updateEmployee(Employee employee) async {
