@@ -8,14 +8,19 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  dio: ^5.3.3
   fluentui_system_icons: ^1.1.220
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.4.4
+  sliding_clipped_nav_bar: ^3.1.0+4
 
 dev_dependencies:
+  custom_lint: ^0.5.5
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  riverpod_lint: ^2.3.2
 
 flutter:
   uses-material-design: true
