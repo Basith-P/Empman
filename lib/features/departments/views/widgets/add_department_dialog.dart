@@ -41,8 +41,8 @@ class _AddDepartmentDialogState
             .read(departmentsControllerProvider.notifier)
             .updateDepartment(dept);
       }
-      Navigator.pop(context);
       ref.refresh(getDepartmentsProvider);
+      Navigator.pop(context);
     }
   }
 

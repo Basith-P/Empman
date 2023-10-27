@@ -12,6 +12,7 @@ class Employee with _$Employee {
     required String email,
     Department? department,
     @JsonKey(name: 'date_of_joining') String? joiningDate,
+    @JsonKey(name: 'is_manager') bool? isManager,
   }) = _Employee;
 
   factory Employee.fromJson(Map<String, dynamic> json) =>

@@ -27,6 +27,7 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
 
   DateTime _dateOfJoining = DateTime.now();
   String? _departmentId;
+  bool isEligible = false;
 
   @override
   void initState() {
@@ -40,6 +41,8 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
     _dateOfJoiningController =
         TextEditingController(text: DateFormat.yMMMMd().format(dateOfJoining));
     _dateOfJoining = dateOfJoining;
+    isEligible = _dateOfJoining
+        .isBefore(DateTime.now().subtract(const Duration(days: 5 * 365 + 1)));
     _departmentId = employee?.department?.id;
   }
 
@@ -63,8 +66,18 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
               departmentId: _departmentId!,
             );
       }
-      Navigator.pop(context);
       ref.refresh(getEmployeesProvider);
+      Navigator.pop(context);
+    }
+  }
+
+  void promoteEmployee() async {
+    final isSuccessful = await ref
+        .read(employeesControllerProvider.notifier)
+        .promoteEmployee(widget.employee!);
+    if (isSuccessful) {
+      ref.refresh(getEmployeesProvider);
+      Navigator.pop(context);
     }
   }
 
@@ -74,7 +87,7 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Employee"),
+        title: Text("${widget.employee != null ? 'Edit' : 'Add'} Employee"),
         actions: widget.employee == null
             ? null
             : [
@@ -83,8 +96,8 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
                     await ref
                         .read(employeesControllerProvider.notifier)
                         .deleteEmployee(widget.employee!.id!);
-                    Navigator.pop(context);
                     ref.refresh(getEmployeesProvider);
+                    Navigator.pop(context);
                   },
                   icon: const Icon(FluentIcons.delete_24_regular),
                 ),
@@ -182,10 +195,12 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
                         ),
                       )),
                       const SizedBox(height: 8.0),
-                      OutlinedButton(
-                          onPressed: () {},
-                          child: const Text("Promote as Manager")),
-                      const SizedBox(height: 8.0),
+                      if (isEligible) ...[
+                        OutlinedButton(
+                            onPressed: promoteEmployee,
+                            child: const Text("Promote as Manager")),
+                        const SizedBox(height: 8.0),
+                      ],
                       FilledButton(
                           onPressed: onpressed, child: const Text("Save")),
                     ],

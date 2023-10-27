@@ -27,6 +27,8 @@ mixin _$Employee {
   Department? get department => throw _privateConstructorUsedError;
   @JsonKey(name: 'date_of_joining')
   String? get joiningDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_manager')
+  bool? get isManager => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +46,8 @@ abstract class $EmployeeCopyWith<$Res> {
       @JsonKey(name: 'full_name') String name,
       String email,
       Department? department,
-      @JsonKey(name: 'date_of_joining') String? joiningDate});
+      @JsonKey(name: 'date_of_joining') String? joiningDate,
+      @JsonKey(name: 'is_manager') bool? isManager});
 
   $DepartmentCopyWith<$Res>? get department;
 }
@@ -67,6 +70,7 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
     Object? email = null,
     Object? department = freezed,
     Object? joiningDate = freezed,
+    Object? isManager = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -89,6 +93,10 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
           ? _value.joiningDate
           : joiningDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      isManager: freezed == isManager
+          ? _value.isManager
+          : isManager // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -118,7 +126,8 @@ abstract class _$$EmployeeImplCopyWith<$Res>
       @JsonKey(name: 'full_name') String name,
       String email,
       Department? department,
-      @JsonKey(name: 'date_of_joining') String? joiningDate});
+      @JsonKey(name: 'date_of_joining') String? joiningDate,
+      @JsonKey(name: 'is_manager') bool? isManager});
 
   @override
   $DepartmentCopyWith<$Res>? get department;
@@ -140,6 +149,7 @@ class __$$EmployeeImplCopyWithImpl<$Res>
     Object? email = null,
     Object? department = freezed,
     Object? joiningDate = freezed,
+    Object? isManager = freezed,
   }) {
     return _then(_$EmployeeImpl(
       id: freezed == id
@@ -162,6 +172,10 @@ class __$$EmployeeImplCopyWithImpl<$Res>
           ? _value.joiningDate
           : joiningDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      isManager: freezed == isManager
+          ? _value.isManager
+          : isManager // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -174,7 +188,8 @@ class _$EmployeeImpl implements _Employee {
       @JsonKey(name: 'full_name') required this.name,
       required this.email,
       this.department,
-      @JsonKey(name: 'date_of_joining') this.joiningDate});
+      @JsonKey(name: 'date_of_joining') this.joiningDate,
+      @JsonKey(name: 'is_manager') this.isManager});
 
   factory _$EmployeeImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeeImplFromJson(json);
@@ -191,10 +206,13 @@ class _$EmployeeImpl implements _Employee {
   @override
   @JsonKey(name: 'date_of_joining')
   final String? joiningDate;
+  @override
+  @JsonKey(name: 'is_manager')
+  final bool? isManager;
 
   @override
   String toString() {
-    return 'Employee(id: $id, name: $name, email: $email, department: $department, joiningDate: $joiningDate)';
+    return 'Employee(id: $id, name: $name, email: $email, department: $department, joiningDate: $joiningDate, isManager: $isManager)';
   }
 
   @override
@@ -208,13 +226,15 @@ class _$EmployeeImpl implements _Employee {
             (identical(other.department, department) ||
                 other.department == department) &&
             (identical(other.joiningDate, joiningDate) ||
-                other.joiningDate == joiningDate));
+                other.joiningDate == joiningDate) &&
+            (identical(other.isManager, isManager) ||
+                other.isManager == isManager));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, email, department, joiningDate);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, email, department, joiningDate, isManager);
 
   @JsonKey(ignore: true)
   @override
@@ -232,12 +252,12 @@ class _$EmployeeImpl implements _Employee {
 
 abstract class _Employee implements Employee {
   const factory _Employee(
-          {final String? id,
-          @JsonKey(name: 'full_name') required final String name,
-          required final String email,
-          final Department? department,
-          @JsonKey(name: 'date_of_joining') final String? joiningDate}) =
-      _$EmployeeImpl;
+      {final String? id,
+      @JsonKey(name: 'full_name') required final String name,
+      required final String email,
+      final Department? department,
+      @JsonKey(name: 'date_of_joining') final String? joiningDate,
+      @JsonKey(name: 'is_manager') final bool? isManager}) = _$EmployeeImpl;
 
   factory _Employee.fromJson(Map<String, dynamic> json) =
       _$EmployeeImpl.fromJson;
@@ -254,6 +274,9 @@ abstract class _Employee implements Employee {
   @override
   @JsonKey(name: 'date_of_joining')
   String? get joiningDate;
+  @override
+  @JsonKey(name: 'is_manager')
+  bool? get isManager;
   @override
   @JsonKey(ignore: true)
   _$$EmployeeImplCopyWith<_$EmployeeImpl> get copyWith =>

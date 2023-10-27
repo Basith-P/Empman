@@ -15,6 +15,7 @@ _$EmployeeImpl _$$EmployeeImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Department.fromJson(json['department'] as Map<String, dynamic>),
       joiningDate: json['date_of_joining'] as String?,
+      isManager: json['is_manager'] as bool?,
     );
 
 Map<String, dynamic> _$$EmployeeImplToJson(_$EmployeeImpl instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$EmployeeImplToJson(_$EmployeeImpl instance) =>
       'email': instance.email,
       'department': instance.department,
       'date_of_joining': instance.joiningDate,
+      'is_manager': instance.isManager,
     };

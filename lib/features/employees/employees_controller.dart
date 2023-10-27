@@ -80,4 +80,21 @@ class EmployeesController extends StateNotifier<bool> {
       state = false;
     }
   }
+
+  Future<bool> promoteEmployee(Employee employee) async {
+    bool isSuccessful = false;
+    try {
+      state = true;
+      final data = employee.copyWith(isManager: true).toJson();
+      data['department'] = employee.department?.id;
+      debugPrint(data.toString());
+      await _dio.put('${Endpoints.employees}/${employee.id}/', data: data);
+      isSuccessful = true;
+    } catch (e) {
+      debugPrint('=======> Error: $e');
+    } finally {
+      state = false;
+    }
+    return isSuccessful;
+  }
 }
