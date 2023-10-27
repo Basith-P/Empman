@@ -19,9 +19,6 @@ class DepartmentsList extends ConsumerWidget {
                   itemBuilder: (_, i) {
                     return ListTile(
                         title: Text(data[i].name),
-                        leading: const CircleAvatar(
-                          child: Icon(Icons.person),
-                        ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [

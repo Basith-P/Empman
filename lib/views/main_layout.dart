@@ -1,5 +1,6 @@
 import 'package:emplman/features/departments/views/pages/departments_page.dart';
 import 'package:emplman/features/employees/pages/employees_list.page.dart';
+import 'package:emplman/views/switch_theme_dialog.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
@@ -17,7 +18,16 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Emplman")),
+      appBar: AppBar(
+        title: const Text("Emplman"),
+        actions: [
+          IconButton(
+            icon: const Icon(FluentIcons.settings_24_regular),
+            onPressed: () => showDialog(
+                context: context, builder: (_) => const SwitchThemeDialog()),
+          ),
+        ],
+      ),
       body: IndexedStack(
         index: _currentIndex,
         children: const [
