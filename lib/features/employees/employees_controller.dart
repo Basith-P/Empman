@@ -70,7 +70,7 @@ class EmployeesController extends StateNotifier<bool> {
     }
   }
 
-  Future<void> deleteEmployee(int id) async {
+  Future<void> deleteEmployee(String id) async {
     try {
       state = true;
       await _dio.delete('${Endpoints.employees}/$id/');

@@ -3,6 +3,7 @@ import 'package:emplman/core/utils/widgets/loaders.dart';
 import 'package:emplman/features/departments/providers.dart';
 import 'package:emplman/features/employees/models/employee.dart';
 import 'package:emplman/features/employees/providers.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -72,7 +73,23 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
     bool isLoading = ref.watch(employeesControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Add Employee")),
+      appBar: AppBar(
+        title: const Text("Add Employee"),
+        actions: widget.employee == null
+            ? null
+            : [
+                IconButton(
+                  onPressed: () async {
+                    await ref
+                        .read(employeesControllerProvider.notifier)
+                        .deleteEmployee(widget.employee!.id!);
+                    Navigator.pop(context);
+                    ref.refresh(getEmployeesProvider);
+                  },
+                  icon: const Icon(FluentIcons.delete_24_regular),
+                ),
+              ],
+      ),
       body: isLoading
           ? loaderPrimary
           : ref.watch(getDepartmentsProvider).when(
