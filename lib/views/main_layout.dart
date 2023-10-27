@@ -1,3 +1,4 @@
+import 'package:emplman/features/employees/widgets/employees_list.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
@@ -19,7 +20,7 @@ class _MainLayoutState extends State<MainLayout> {
       body: IndexedStack(
         index: _currentIndex,
         children: const [
-          Center(child: Text("Employees")),
+          EmployeesList(),
           Center(child: Text("Eligible")),
           Center(child: Text("Managers")),
         ],
