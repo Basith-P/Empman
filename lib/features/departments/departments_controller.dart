@@ -66,10 +66,12 @@ class DepartmentsController extends StateNotifier<bool> {
     }
   }
 
-  Future<void> deleteDepartment(int id) async {
+  Future<void> deleteDepartment(Department dept) async {
     try {
       state = true;
-      await _dio.delete('${Endpoints.departments}/$id/');
+      showSnackBar('Please wait...');
+      await _dio.delete('${Endpoints.departments}/${dept.id}/');
+      showSnackBar("Deleted '${dept.name}'");
     } catch (e) {
       rethrow;
     } finally {

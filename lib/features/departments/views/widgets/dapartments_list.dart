@@ -8,6 +8,8 @@ class DepartmentsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    bool isLoading = ref.watch(getDepartmentsProvider).isLoading;
+
     return ref.watch(getDepartmentsProvider).when(
           data: (data) => data.isEmpty
               ? const Center(child: Text("No departments found"))
@@ -24,11 +26,19 @@ class DepartmentsList extends ConsumerWidget {
                           children: [
                             IconButton(
                               icon: const Icon(FluentIcons.edit_16_regular),
-                              onPressed: () {},
+                              onPressed: isLoading ? null : () {},
                             ),
                             IconButton(
                               icon: const Icon(FluentIcons.delete_16_regular),
-                              onPressed: () {},
+                              onPressed: isLoading
+                                  ? null
+                                  : () async {
+                                      await ref
+                                          .read(departmentsControllerProvider
+                                              .notifier)
+                                          .deleteDepartment(data[i]);
+                                      ref.refresh(getDepartmentsProvider);
+                                    },
                             ),
                           ],
                         ));
