@@ -62,6 +62,7 @@ class EmployeesController extends StateNotifier<bool> {
       state = true;
       Map data = employee.toJson();
       data['department'] = departmentId;
+      debugPrint(data.toString());
       await _dio.put('${Endpoints.employees}/${employee.id}/', data: data);
     } catch (e) {
       rethrow;

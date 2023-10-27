@@ -32,7 +32,7 @@ class _MainLayoutState extends State<MainLayout> {
         index: _currentIndex,
         children: const [
           EmployeesListPage(),
-          Center(child: Text("Eligible")),
+          // Center(child: Text("Eligible")),
           DepartmentsListPage(),
         ],
       ),
@@ -65,7 +65,7 @@ class _MainLayoutState extends State<MainLayout> {
         backgroundColor: Theme.of(context).colorScheme.surface,
         barItems: [
           BarItem(icon: FluentIcons.people_team_24_regular, title: "Employees"),
-          BarItem(icon: FluentIcons.person_add_24_regular, title: "Eligible"),
+          // BarItem(icon: FluentIcons.person_add_24_regular, title: "Eligible"),
           BarItem(icon: FluentIcons.grid_24_regular, title: "Departments"),
         ],
       ),

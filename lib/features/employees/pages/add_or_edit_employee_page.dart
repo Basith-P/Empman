@@ -53,6 +53,7 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
         name: _nameController.text,
         email: _emailController.text,
         joiningDate: DateFormat('yyyy-MM-dd').format(_dateOfJoining),
+        isManager: widget.employee?.isManager ?? false,
       );
 
       if (widget.employee != null) {

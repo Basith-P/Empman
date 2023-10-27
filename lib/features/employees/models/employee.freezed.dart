@@ -27,7 +27,7 @@ mixin _$Employee {
   Department? get department => throw _privateConstructorUsedError;
   @JsonKey(name: 'date_of_joining')
   String? get joiningDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_manager')
+  @JsonKey(name: 'is_manager', defaultValue: false)
   bool? get isManager => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $EmployeeCopyWith<$Res> {
       String email,
       Department? department,
       @JsonKey(name: 'date_of_joining') String? joiningDate,
-      @JsonKey(name: 'is_manager') bool? isManager});
+      @JsonKey(name: 'is_manager', defaultValue: false) bool? isManager});
 
   $DepartmentCopyWith<$Res>? get department;
 }
@@ -127,7 +127,7 @@ abstract class _$$EmployeeImplCopyWith<$Res>
       String email,
       Department? department,
       @JsonKey(name: 'date_of_joining') String? joiningDate,
-      @JsonKey(name: 'is_manager') bool? isManager});
+      @JsonKey(name: 'is_manager', defaultValue: false) bool? isManager});
 
   @override
   $DepartmentCopyWith<$Res>? get department;
@@ -189,7 +189,8 @@ class _$EmployeeImpl implements _Employee {
       required this.email,
       this.department,
       @JsonKey(name: 'date_of_joining') this.joiningDate,
-      @JsonKey(name: 'is_manager') this.isManager});
+      @JsonKey(name: 'is_manager', defaultValue: false)
+      this.isManager = false});
 
   factory _$EmployeeImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeeImplFromJson(json);
@@ -207,7 +208,7 @@ class _$EmployeeImpl implements _Employee {
   @JsonKey(name: 'date_of_joining')
   final String? joiningDate;
   @override
-  @JsonKey(name: 'is_manager')
+  @JsonKey(name: 'is_manager', defaultValue: false)
   final bool? isManager;
 
   @override
@@ -257,7 +258,8 @@ abstract class _Employee implements Employee {
       required final String email,
       final Department? department,
       @JsonKey(name: 'date_of_joining') final String? joiningDate,
-      @JsonKey(name: 'is_manager') final bool? isManager}) = _$EmployeeImpl;
+      @JsonKey(name: 'is_manager', defaultValue: false)
+      final bool? isManager}) = _$EmployeeImpl;
 
   factory _Employee.fromJson(Map<String, dynamic> json) =
       _$EmployeeImpl.fromJson;
@@ -275,7 +277,7 @@ abstract class _Employee implements Employee {
   @JsonKey(name: 'date_of_joining')
   String? get joiningDate;
   @override
-  @JsonKey(name: 'is_manager')
+  @JsonKey(name: 'is_manager', defaultValue: false)
   bool? get isManager;
   @override
   @JsonKey(ignore: true)
