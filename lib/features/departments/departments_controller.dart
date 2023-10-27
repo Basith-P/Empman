@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:emplman/core/endpoints.dart';
+import 'package:emplman/core/utils/functions.dart';
 import 'package:emplman/features/departments/models/department.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,11 +40,14 @@ class DepartmentsController extends StateNotifier<bool> {
     bool isSuccessful = false;
     try {
       state = true;
-      Map data = department.toJson();
+      Map data = {"name": department.name};
+      debugPrint(data.toString());
+      debugPrint(department.toJson().toString());
       await _dio.post(Endpoints.departments, data: data);
       isSuccessful = true;
     } catch (e) {
-      rethrow;
+      debugPrint('====> Error: $e');
+      showSnackBar('Something went wrong, please try again later.');
     } finally {
       state = false;
     }

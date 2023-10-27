@@ -1,5 +1,5 @@
+import 'package:emplman/features/departments/views/widgets/add_department_dialog.dart';
 import 'package:emplman/features/departments/views/widgets/dapartments_list.dart';
-import 'package:emplman/features/employees/widgets/add_employee_dialog.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class DepartmentsListPage extends StatelessWidget {
       body: const DepartmentsList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog(
-            context: context, builder: (_) => const AddEmployeeDialog()),
+            context: context, builder: (_) => const AddDepartmentDialog()),
         child: const Icon(FluentIcons.add_24_regular),
       ),
     );
