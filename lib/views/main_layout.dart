@@ -1,3 +1,4 @@
+import 'package:emplman/features/departments/views/pages/departments_page.dart';
 import 'package:emplman/features/employees/pages/employees_list.page.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _MainLayoutState extends State<MainLayout> {
         children: const [
           EmployeesListPage(),
           Center(child: Text("Eligible")),
-          Center(child: Text("Managers")),
+          DepartmentsListPage(),
         ],
       ),
       // bottomNavigationBar: BottomNavigationBar(

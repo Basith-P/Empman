@@ -1,4 +1,4 @@
-import 'package:emplman/features/employees/models/department.dart';
+import 'package:emplman/features/departments/models/department.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'employee.freezed.dart';

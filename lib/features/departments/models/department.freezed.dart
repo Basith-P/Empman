@@ -20,8 +20,10 @@ Department _$DepartmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Department {
-  int get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get location => throw _privateConstructorUsedError;
+  String? get manager => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,7 @@ abstract class $DepartmentCopyWith<$Res> {
           Department value, $Res Function(Department) then) =
       _$DepartmentCopyWithImpl<$Res, Department>;
   @useResult
-  $Res call({int id, String name});
+  $Res call({String? id, String name, String? location, String? manager});
 }
 
 /// @nodoc
@@ -51,18 +53,28 @@ class _$DepartmentCopyWithImpl<$Res, $Val extends Department>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
+    Object? location = freezed,
+    Object? manager = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      manager: freezed == manager
+          ? _value.manager
+          : manager // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +87,7 @@ abstract class _$$DepartmentImplCopyWith<$Res>
       __$$DepartmentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name});
+  $Res call({String? id, String name, String? location, String? manager});
 }
 
 /// @nodoc
@@ -89,18 +101,28 @@ class __$$DepartmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
+    Object? location = freezed,
+    Object? manager = freezed,
   }) {
     return _then(_$DepartmentImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      manager: freezed == manager
+          ? _value.manager
+          : manager // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -108,19 +130,24 @@ class __$$DepartmentImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DepartmentImpl implements _Department {
-  const _$DepartmentImpl({required this.id, required this.name});
+  const _$DepartmentImpl(
+      {this.id, required this.name, this.location, this.manager});
 
   factory _$DepartmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$DepartmentImplFromJson(json);
 
   @override
-  final int id;
+  final String? id;
   @override
   final String name;
+  @override
+  final String? location;
+  @override
+  final String? manager;
 
   @override
   String toString() {
-    return 'Department(id: $id, name: $name)';
+    return 'Department(id: $id, name: $name, location: $location, manager: $manager)';
   }
 
   @override
@@ -129,12 +156,15 @@ class _$DepartmentImpl implements _Department {
         (other.runtimeType == runtimeType &&
             other is _$DepartmentImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.manager, manager) || other.manager == manager));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, location, manager);
 
   @JsonKey(ignore: true)
   @override
@@ -152,15 +182,22 @@ class _$DepartmentImpl implements _Department {
 
 abstract class _Department implements Department {
   const factory _Department(
-      {required final int id, required final String name}) = _$DepartmentImpl;
+      {final String? id,
+      required final String name,
+      final String? location,
+      final String? manager}) = _$DepartmentImpl;
 
   factory _Department.fromJson(Map<String, dynamic> json) =
       _$DepartmentImpl.fromJson;
 
   @override
-  int get id;
+  String? get id;
   @override
   String get name;
+  @override
+  String? get location;
+  @override
+  String? get manager;
   @override
   @JsonKey(ignore: true)
   _$$DepartmentImplCopyWith<_$DepartmentImpl> get copyWith =>
