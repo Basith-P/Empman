@@ -17,8 +17,10 @@ class DepartmentsList extends ConsumerWidget {
               : ListView.builder(
                   itemCount: data.length,
                   itemBuilder: (_, i) {
+                    final dept = data[i];
                     return ListTile(
-                        title: Text(data[i].name),
+                        title: Text(dept.name),
+                        subtitle: Text(dept.manager ?? "No manager"),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [

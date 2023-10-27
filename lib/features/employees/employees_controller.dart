@@ -34,12 +34,15 @@ class EmployeesController extends StateNotifier<bool> {
     }
   }
 
-  Future<bool> createEmployee(Employee employee) async {
+  Future<bool> createEmployee({
+    required Employee employee,
+    required String departmentId,
+  }) async {
     bool isSuccessful = false;
     try {
       state = true;
       Map data = employee.toJson();
-      data['department'] = employee.department?.id ?? 1;
+      data['department'] = departmentId;
       debugPrint(data.toString());
       await _dio.post(Endpoints.employees, data: data);
       isSuccessful = true;
@@ -51,11 +54,15 @@ class EmployeesController extends StateNotifier<bool> {
     return isSuccessful;
   }
 
-  Future<void> updateEmployee(Employee employee) async {
+  Future<void> updateEmployee({
+    required Employee employee,
+    required String departmentId,
+  }) async {
     try {
       state = true;
-      await _dio.put('${Endpoints.employees}/${employee.id}/',
-          data: employee.toJson());
+      Map data = employee.toJson();
+      data['department'] = departmentId;
+      await _dio.put('${Endpoints.employees}/${employee.id}/', data: data);
     } catch (e) {
       rethrow;
     } finally {

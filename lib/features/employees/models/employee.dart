@@ -7,8 +7,8 @@ part 'employee.g.dart';
 @freezed
 class Employee with _$Employee {
   const factory Employee({
-    int? id,
-    required String name,
+    String? id,
+    @JsonKey(name: 'full_name') required String name,
     required String email,
     Department? department,
     @JsonKey(name: 'date_of_joining') String? joiningDate,

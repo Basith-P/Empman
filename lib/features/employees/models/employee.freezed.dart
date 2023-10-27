@@ -20,7 +20,8 @@ Employee _$EmployeeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Employee {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_name')
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   Department? get department => throw _privateConstructorUsedError;
@@ -39,8 +40,8 @@ abstract class $EmployeeCopyWith<$Res> {
       _$EmployeeCopyWithImpl<$Res, Employee>;
   @useResult
   $Res call(
-      {int? id,
-      String name,
+      {String? id,
+      @JsonKey(name: 'full_name') String name,
       String email,
       Department? department,
       @JsonKey(name: 'date_of_joining') String? joiningDate});
@@ -71,7 +72,7 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -113,8 +114,8 @@ abstract class _$$EmployeeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      String name,
+      {String? id,
+      @JsonKey(name: 'full_name') String name,
       String email,
       Department? department,
       @JsonKey(name: 'date_of_joining') String? joiningDate});
@@ -144,7 +145,7 @@ class __$$EmployeeImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -170,7 +171,7 @@ class __$$EmployeeImplCopyWithImpl<$Res>
 class _$EmployeeImpl implements _Employee {
   const _$EmployeeImpl(
       {this.id,
-      required this.name,
+      @JsonKey(name: 'full_name') required this.name,
       required this.email,
       this.department,
       @JsonKey(name: 'date_of_joining') this.joiningDate});
@@ -179,8 +180,9 @@ class _$EmployeeImpl implements _Employee {
       _$$EmployeeImplFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
+  @JsonKey(name: 'full_name')
   final String name;
   @override
   final String email;
@@ -230,8 +232,8 @@ class _$EmployeeImpl implements _Employee {
 
 abstract class _Employee implements Employee {
   const factory _Employee(
-          {final int? id,
-          required final String name,
+          {final String? id,
+          @JsonKey(name: 'full_name') required final String name,
           required final String email,
           final Department? department,
           @JsonKey(name: 'date_of_joining') final String? joiningDate}) =
@@ -241,8 +243,9 @@ abstract class _Employee implements Employee {
       _$EmployeeImpl.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
+  @JsonKey(name: 'full_name')
   String get name;
   @override
   String get email;
