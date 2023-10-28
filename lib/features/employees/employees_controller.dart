@@ -13,6 +13,7 @@ class EmployeesController extends StateNotifier<bool> {
     try {
       final response = await _dio.get(Endpoints.employees);
       final data = response.data['data'] as List<dynamic>;
+      debugPrint(data.toString());
       final employees = data.map((e) => Employee.fromJson(e)).toList();
       return employees;
     } catch (e) {

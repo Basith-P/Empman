@@ -86,6 +86,8 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
   Widget build(BuildContext context) {
     bool isLoading = ref.watch(employeesControllerProvider);
 
+    final employee = widget.employee;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("${widget.employee != null ? 'Edit' : 'Add'} Employee"),
@@ -196,7 +198,7 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
                         ),
                       )),
                       const SizedBox(height: 8.0),
-                      if (isEligible) ...[
+                      if (isEligible && (!(employee?.isManager ?? false))) ...[
                         OutlinedButton(
                             onPressed: promoteEmployee,
                             child: const Text("Promote as Manager")),

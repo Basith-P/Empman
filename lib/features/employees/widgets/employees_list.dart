@@ -14,6 +14,8 @@ class EmployeesList extends ConsumerWidget {
               : ListView.builder(
                   itemCount: data.length,
                   itemBuilder: (_, i) {
+                    final subtitle =
+                        '${(data[i].isManager ?? false) ? 'Manager of ' : ''}${data[i].department?.name}';
                     return ListTile(
                       onTap: () {
                         Navigator.of(context).push(
@@ -24,8 +26,7 @@ class EmployeesList extends ConsumerWidget {
                         );
                       },
                       title: Text(data[i].name),
-                      subtitle:
-                          Text(data[i].department?.name ?? "No department"),
+                      subtitle: Text(subtitle),
                       leading: const CircleAvatar(
                         child: Icon(Icons.person),
                       ),
