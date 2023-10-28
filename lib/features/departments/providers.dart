@@ -1,6 +1,6 @@
-import 'package:emplman/core/providers.dart';
-import 'package:emplman/features/departments/departments_controller.dart';
-import 'package:emplman/features/departments/models/department.dart';
+import 'package:empman/core/providers.dart';
+import 'package:empman/features/departments/departments_controller.dart';
+import 'package:empman/features/departments/models/department.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final departmentsControllerProvider =

@@ -1,8 +1,8 @@
-import 'package:emplman/core/constants.dart';
-import 'package:emplman/core/utils/widgets/loaders.dart';
-import 'package:emplman/features/departments/providers.dart';
-import 'package:emplman/features/employees/models/employee.dart';
-import 'package:emplman/features/employees/providers.dart';
+import 'package:empman/core/constants.dart';
+import 'package:empman/core/utils/widgets/loaders.dart';
+import 'package:empman/features/departments/providers.dart';
+import 'package:empman/features/employees/models/employee.dart';
+import 'package:empman/features/employees/providers.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

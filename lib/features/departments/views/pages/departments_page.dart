@@ -1,5 +1,5 @@
-import 'package:emplman/features/departments/views/widgets/add_department_dialog.dart';
-import 'package:emplman/features/departments/views/widgets/dapartments_list.dart';
+import 'package:empman/features/departments/views/widgets/add_department_dialog.dart';
+import 'package:empman/features/departments/views/widgets/dapartments_list.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 

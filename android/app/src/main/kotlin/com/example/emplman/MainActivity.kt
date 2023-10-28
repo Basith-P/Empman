@@ -1,4 +1,4 @@
-package com.example.emplman
+package com.example.empman
 
 import io.flutter.embedding.android.FlutterActivity
 

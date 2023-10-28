@@ -1,7 +1,7 @@
-import 'package:emplman/core/constants.dart';
-import 'package:emplman/core/env.dart';
-import 'package:emplman/core/utils/functions.dart';
-import 'package:emplman/views/main_layout.dart';
+import 'package:empman/core/constants.dart';
+import 'package:empman/core/env.dart';
+import 'package:empman/core/utils/functions.dart';
+import 'package:empman/views/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

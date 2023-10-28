@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "emplman" "\0"
+            VALUE "FileDescription", "empman" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "emplman" "\0"
+            VALUE "InternalName", "empman" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "emplman.exe" "\0"
-            VALUE "ProductName", "emplman" "\0"
+            VALUE "OriginalFilename", "empman.exe" "\0"
+            VALUE "ProductName", "empman" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

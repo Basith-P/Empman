@@ -1,8 +1,10 @@
-import 'package:emplman/features/departments/views/pages/departments_page.dart';
-import 'package:emplman/features/employees/pages/employees_list.page.dart';
-import 'package:emplman/views/switch_theme_dialog.dart';
+import 'package:empman/features/auth/views/login_page.dart';
+import 'package:empman/features/departments/views/pages/departments_page.dart';
+import 'package:empman/features/employees/pages/employees_list.page.dart';
+import 'package:empman/views/switch_theme_dialog.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
 class MainLayout extends StatefulWidget {
@@ -26,6 +28,17 @@ class _MainLayoutState extends State<MainLayout> {
             onPressed: () => showDialog(
                 context: context, builder: (_) => const SwitchThemeDialog()),
           ),
+          IconButton(
+              icon: const Icon(FluentIcons.sign_out_24_regular),
+              onPressed: () async {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LogingPage()),
+                    (route) => false);
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+                await prefs.setBool('isLoggedin', false);
+              }),
         ],
       ),
       body: IndexedStack(

@@ -1,4 +1,4 @@
-import 'package:emplman/core/global_keys.dart';
+import 'package:empman/core/global_keys.dart';
 import 'package:flutter/material.dart' show SnackBar, Text;
 
 void showSnackBar(String message) {

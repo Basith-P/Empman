@@ -1,6 +1,6 @@
-import 'package:emplman/core/providers.dart';
-import 'package:emplman/features/employees/employees_controller.dart';
-import 'package:emplman/features/employees/models/employee.dart';
+import 'package:empman/core/providers.dart';
+import 'package:empman/features/employees/employees_controller.dart';
+import 'package:empman/features/employees/models/employee.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final employeesControllerProvider =

@@ -1,6 +1,6 @@
-import 'package:emplman/core/constants.dart';
-import 'package:emplman/features/departments/models/department.dart';
-import 'package:emplman/features/departments/providers.dart';
+import 'package:empman/core/constants.dart';
+import 'package:empman/features/departments/models/department.dart';
+import 'package:empman/features/departments/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

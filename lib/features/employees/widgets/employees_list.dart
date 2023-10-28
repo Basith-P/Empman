@@ -1,5 +1,5 @@
-import 'package:emplman/features/employees/pages/add_or_edit_employee_page.dart';
-import 'package:emplman/features/employees/providers.dart';
+import 'package:empman/features/employees/pages/add_or_edit_employee_page.dart';
+import 'package:empman/features/employees/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

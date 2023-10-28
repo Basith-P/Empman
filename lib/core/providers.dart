@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:emplman/core/env.dart';
+import 'package:empman/core/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
