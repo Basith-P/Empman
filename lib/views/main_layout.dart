@@ -1,6 +1,7 @@
 import 'package:empman/features/auth/views/login_page.dart';
 import 'package:empman/features/departments/views/pages/departments_page.dart';
 import 'package:empman/features/employees/pages/employees_list.page.dart';
+import 'package:empman/features/employees/widgets/eligible_list.dart';
 import 'package:empman/views/switch_theme_dialog.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _MainLayoutState extends State<MainLayout> {
         index: _currentIndex,
         children: const [
           EmployeesListPage(),
-          // Center(child: Text("Eligible")),
+          EligibleEmployeesList(),
           DepartmentsListPage(),
         ],
       ),
@@ -78,7 +79,7 @@ class _MainLayoutState extends State<MainLayout> {
         backgroundColor: Theme.of(context).colorScheme.surface,
         barItems: [
           BarItem(icon: FluentIcons.people_team_24_regular, title: "Employees"),
-          // BarItem(icon: FluentIcons.person_add_24_regular, title: "Eligible"),
+          BarItem(icon: FluentIcons.person_tag_24_regular, title: "Eligible"),
           BarItem(icon: FluentIcons.grid_24_regular, title: "Departments"),
         ],
       ),

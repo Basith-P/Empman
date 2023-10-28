@@ -12,3 +12,10 @@ final getEmployeesProvider = FutureProvider<List<Employee>>((ref) async {
   final employees = await employeesController.getEmployees();
   return employees;
 });
+
+final getEligibleEmployeesProvider =
+    FutureProvider<List<Employee>>((ref) async {
+  final employeesController = ref.read(employeesControllerProvider.notifier);
+  final employees = await employeesController.getEligibleEmployees();
+  return employees;
+});

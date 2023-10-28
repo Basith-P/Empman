@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:empman/core/endpoints.dart';
 import 'package:empman/features/employees/models/employee.dart';
@@ -14,6 +16,18 @@ class EmployeesController extends StateNotifier<bool> {
       final response = await _dio.get(Endpoints.employees);
       final data = response.data['data'] as List<dynamic>;
       debugPrint(data.toString());
+      final employees = data.map((e) => Employee.fromJson(e)).toList();
+      return employees;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<Employee>> getEligibleEmployees() async {
+    try {
+      final response = await _dio.get(Endpoints.eligibileEmployees);
+      final data = response.data['data'] as List<dynamic>;
+      debugPrint('\nEligible: $data');
       final employees = data.map((e) => Employee.fromJson(e)).toList();
       return employees;
     } catch (e) {
@@ -44,7 +58,7 @@ class EmployeesController extends StateNotifier<bool> {
       state = true;
       Map data = employee.toJson();
       data['department'] = departmentId;
-      debugPrint(data.toString());
+      debugPrint(((jsonEncode(data))).toString());
       await _dio.post(Endpoints.employees, data: data);
       isSuccessful = true;
     } catch (e) {
@@ -55,21 +69,24 @@ class EmployeesController extends StateNotifier<bool> {
     return isSuccessful;
   }
 
-  Future<void> updateEmployee({
+  Future<bool> updateEmployee({
     required Employee employee,
     required String departmentId,
   }) async {
+    bool isSuccessful = false;
     try {
       state = true;
       Map data = employee.toJson();
       data['department'] = departmentId;
       debugPrint(data.toString());
       await _dio.put('${Endpoints.employees}/${employee.id}/', data: data);
+      isSuccessful = true;
     } catch (e) {
       rethrow;
     } finally {
       state = false;
     }
+    return isSuccessful;
   }
 
   Future<void> deleteEmployee(String id) async {

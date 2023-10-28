@@ -55,20 +55,24 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
         joiningDate: DateFormat('yyyy-MM-dd').format(_dateOfJoining),
         isManager: widget.employee?.isManager ?? false,
       );
-
+      bool isSucces = false;
       if (widget.employee != null) {
-        await ref.read(employeesControllerProvider.notifier).updateEmployee(
-              employee: employee,
-              departmentId: _departmentId!,
-            );
+        isSucces =
+            await ref.read(employeesControllerProvider.notifier).updateEmployee(
+                  employee: employee,
+                  departmentId: _departmentId!,
+                );
       } else {
-        await ref.read(employeesControllerProvider.notifier).createEmployee(
-              employee: employee,
-              departmentId: _departmentId!,
-            );
+        isSucces =
+            await ref.read(employeesControllerProvider.notifier).createEmployee(
+                  employee: employee,
+                  departmentId: _departmentId!,
+                );
       }
-      ref.refresh(getEmployeesProvider);
-      Navigator.pop(context);
+      if (isSucces) {
+        ref.refresh(getEmployeesProvider);
+        Navigator.pop(context);
+      }
     }
   }
 
@@ -78,6 +82,7 @@ class _AddOrEditEmployeePageState extends ConsumerState<AddOrEditEmployeePage> {
         .promoteEmployee(widget.employee!);
     if (isSuccessful) {
       ref.refresh(getEmployeesProvider);
+      ref.refresh(getDepartmentsProvider);
       Navigator.pop(context);
     }
   }
