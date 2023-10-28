@@ -33,7 +33,8 @@ class EmployeesList extends ConsumerWidget {
                     );
                   },
                 ),
-          error: (error, stackTrace) => Center(child: Text(error.toString())),
+          error: (error, stackTrace) =>
+              const Center(child: Text('Something went wrong')),
           loading: () => const Center(child: CircularProgressIndicator()),
         );
   }
