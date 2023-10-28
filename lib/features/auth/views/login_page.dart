@@ -3,6 +3,7 @@ import 'package:emplman/core/env.dart';
 import 'package:emplman/core/utils/functions.dart';
 import 'package:emplman/views/main_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LogingPage extends StatefulWidget {
   const LogingPage({super.key});
@@ -32,8 +33,12 @@ class _LogingPageState extends State<LogingPage> {
         return;
       }
 
-      Future.delayed(const Duration(seconds: 1)).then((value) => Navigator.push(
-          context, MaterialPageRoute(builder: (_) => const MainLayout())));
+      Future.delayed(const Duration(seconds: 1)).then((value) async {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isLoggedin', true);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => const MainLayout()));
+      });
     }
   }
 
