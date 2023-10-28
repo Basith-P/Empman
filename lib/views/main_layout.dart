@@ -19,7 +19,7 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Emplman"),
+        title: const Text("Empman"),
         actions: [
           IconButton(
             icon: const Icon(FluentIcons.settings_24_regular),

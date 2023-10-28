@@ -1,6 +1,6 @@
 import 'package:emplman/core/global_keys.dart';
 import 'package:emplman/core/providers.dart';
-import 'package:emplman/views/main_layout.dart';
+import 'package:emplman/features/auth/views/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
       themeMode: ref.watch(themeModeProvider),
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: scaffoldMessengerKey,
-      home: const MainLayout(),
+      home: const LogingPage(),
     );
   }
 }
